@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import nanoid from 'nanoid';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import {nanoid} from 'nanoid';
+import { ContactForm } from './contactForm/ContactForm';
+import { ContactList } from './contactList/ContactList';
+import { Filter } from './filter/Filter';
 import css from './App.module.css';
 
 export class App extends Component {
@@ -52,9 +52,9 @@ export class App extends Component {
         `${name} is already in contacts`
       );
     } else {
-      this.setState(oldState => {
+      this.setState(prevState => {
         const list = [
-          ...oldState.contacts,
+          ...prevState.contacts,
         ];
         list.push({
           id: nanoid(),
@@ -82,11 +82,11 @@ export class App extends Component {
 
   delContact = id => {
     const { contacts } = this.state;
-    const filtred = contacts.filter(
+    const filtered = contacts.filter(
       item => item.id !== id
     );
     this.setState({
-      contacts: filtred,
+      contacts: filtered,
     });
   };
 
